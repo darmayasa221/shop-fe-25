@@ -1,1 +1,59 @@
 @import "tailwindcss";
+@source "../src";
+
+
+:root {
+  --color-primary: #3b82f6;
+  --color-secondary: #64748b;
+  --color-accent: #f59e0b;
+}
+
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: theme(borderRadius.DEFAULT);
+  padding: theme(padding.2) theme(padding.4);
+  font-weight: theme(fontWeight.medium);
+  
+  &:focus {
+    outline: none;
+    ring-width: theme(ringWidth.2);
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+@utility btn-primary {
+  @apply btn;
+  background-color: var(--color-primary);
+  color: white;
+  
+  &:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-primary), black 10%);
+  }
+}
+
+@utility btn-secondary {
+  @apply btn;
+  background-color: var(--color-secondary);
+  color: white;
+  
+  &:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-secondary), black 10%);
+  }
+}
+
+@utility btn-outline {
+  @apply btn;
+  background-color: transparent;
+  border: 1px solid currentColor;
+  
+  &:hover:not(:disabled) {
+    background-color: theme(colors.gray.50);
+  }
+}
